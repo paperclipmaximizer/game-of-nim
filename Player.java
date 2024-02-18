@@ -19,8 +19,16 @@ public class Player {
      * This method returns the number of stones the player wants to remove in their turn
      * use stones to check if the move is legal
      */
-    public Integer removeStone(int i){
+    public Integer removeStone(int upperBounds){
         System.out.println(name + "'s turn - remove how many?");
-        return (i -= Nim.input.nextInt());
+        int stonesToRemove = Nim.input.nextInt();
+        if (stonesToRemove > upperBounds){
+            stonesToRemove = upperBounds;
+            System.out.println("You must remove at most respect the upperbounds.\nDefaulting to " + upperBounds + " stones removed");
+        }else if (stonesToRemove < 1){
+            stonesToRemove = 1;
+            System.out.println("You must remove at least one stone\nDefaulting to 1 stones removed");
+        }
+        return (stonesToRemove);
     }
 }

@@ -10,7 +10,7 @@ _game of nim completed as part of preparation for COMP90041 Programming and Soft
 javac Nim.java Player.java
 ```
 ## Run
- - The project can be run by running the following in the root of the project
+ - The project can be run by the following command in the root of the project
 ```sh
 java Nim
 ```
