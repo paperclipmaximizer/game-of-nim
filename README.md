@@ -1,6 +1,4 @@
 # game-of-nim
-_game of nim completed as part of preparation for COMP90041 Programming and Software Development._
-
 ## Requires
  - A Java runtime environment
  - a JDK to build the project
