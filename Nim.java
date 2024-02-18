@@ -26,8 +26,9 @@ import java.util.Scanner;
  */
 public class Nim{
     public static Scanner input = new Scanner(System.in);
-/** Helper function to convert any integer n to an n long concatenation of " *"
-	 */
+	/** 
+	 * Helper function to convert any integer n to an n long concatenation of " *"
+	**/
 	public static String integerToAsterisk(int number){
 	String asterisks = "";
 	String end = " *";
@@ -41,10 +42,6 @@ public class Nim{
 		// start the game
 		Nim game = new Nim();
 		game.initGame(); 
-	}
-
-	public void setPlayers(){
-
 	}
 	// initializes the game
 	public void initGame(){
