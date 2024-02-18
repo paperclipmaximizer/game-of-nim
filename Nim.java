@@ -18,7 +18,6 @@
 // 	LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 // 	OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // 	WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 import java.util.Scanner;
 /** Generates a variant of the game of Nim in which the goal is to avoid removing the last stone
  * provides NimGame methods
@@ -37,15 +36,13 @@ public class Nim{
 	}
 		return asterisks;
 	}
-
-	// main method
 	public static void main(String[] args){
-		// setup players
 		System.out.println("Welcome to Nim");
 		// start the game
 		Nim game = new Nim();
 		game.initGame(); 
 	}
+
 	public void setPlayers(){
 
 	}
