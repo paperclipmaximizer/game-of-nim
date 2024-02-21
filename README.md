@@ -1,4 +1,6 @@
 # game-of-nim
+![main](https://github.com/paperclipmaximizer/game-of-nim/actions/workflows/build.yaml/badge.svg?)
+
 ## Requires
  - Maven 
  - JDK 17
