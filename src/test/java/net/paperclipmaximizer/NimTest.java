@@ -48,7 +48,7 @@ public class NimTest extends Nim{
     }
     @Test
     public void testInitialisation() {
-        NimTest game = null;
+        NimTest game = new NimTest();
         assertNotNull(game);
     }
 
