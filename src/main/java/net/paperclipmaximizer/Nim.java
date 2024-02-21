@@ -7,26 +7,23 @@ import java.util.Scanner;
  * plays the gameloop and turn loop
  */
 public class Nim extends Game{
-	// static scanner for input
-	public static Scanner input = new Scanner(System.in);
-	/**
-	 * InnerNim
-	 */
-	Player player_one;
-	Player player_two;
-
-    int upperBounds;
-    int initStones;
-	int currentStones;
 	
+	// players
+	private Player player_one;
+	private Player player_two;
+
+	// stone parameters
+    private int upperBounds;
+    private int initStones;
+	private int currentStones;
+	
+	//enum for keeping track of turns
 	private enum playerTurn {
 		PLAYER_ONE,
 		PLAYER_TWO
 	}
 	private playerTurn turn = playerTurn.PLAYER_ONE;
 
-	// flag for first session
-	private boolean _firstSession = true;
 	// converts Integer n to an n long concatenation of asterisks
 	public static String integerToAsterisk(int number){
 		String asterisks = "";
@@ -38,64 +35,63 @@ public class Nim extends Game{
 	}
 	
 	// called to initialize the game
-	public void initialiseGame(){
-		if (_firstSession){
-			System.out.println("Welcome to Nim!");
-			_firstSession = false;
-			System.out.println("Please eneter Player 1's name:");
-			//a player is initialized with a name;
-			player_one = new Player(input.nextLine());
-			System.out.println("Please enter Player 2's name:");
-			player_two = new Player(input.nextLine());
-			// get game parameters
-			System.out.println("Please enter upper bound of stone removal:");
-			upperBounds = input.nextInt();
-			System.out.println("Please enter initial number of stones:");
-			initStones = input.nextInt();
-		}
-
-		// enter game cycle
-
+	@Override
+	public void initialise(){
+		System.out.println("Welcome to Nim!");
+		System.out.println("Please eneter Player 1's name:");
+		//a player is initialized with a name;
+		player_one = new Player(input.nextLine());
+		System.out.println("Please enter Player 2's name:");
+		player_two = new Player(input.nextLine());
+		// get game parameters
+		System.out.println("Please enter upper bound of stone removal:");
+		// TODO: disallow negative numbers
+		upperBounds = input.nextInt();
+		System.out.println("Please enter initial number of stones:");
+		initStones = input.nextInt();
+		currentStones = initStones;
 	}
 
-	// TODO: clamp currentStones 
+	@Override
 	protected boolean endOfGame(){
 		if (currentStones == 0){
-			return queryPlayAgain();
-		}
+			if (turn == playerTurn.PLAYER_ONE){
+				winner = player_two.getName();
+				
+			}else{
+			winner = player_one.getName();
+			}
+			return true;
+		} 
 		return false;
 	}
 	// runs until the game is over
-	public void nextMove(){
+	@Override
+	protected void nextMove(){
 		//while(currentStones>0) {
 			if (turn == playerTurn.PLAYER_ONE){
-				currentStones = turn(player_one, currentStones, upperBounds);
+				turn(player_one);
 				return;
 			}				
-			currentStones = turn(player_two, currentStones, upperBounds);
-		}
-	//}
+			turn(player_two);
+	}
+
 	// changes the turn
+	@Override
 	protected void changeTurn(){
 		if (turn == playerTurn.PLAYER_ONE){
 			turn = playerTurn.PLAYER_TWO;
-		}else{
-			turn = playerTurn.PLAYER_ONE;
+			return;
 		}
+		turn = playerTurn.PLAYER_ONE;
 	}
 	// runs a single turn
-	public static Integer turn(Player player, int currentStones, int upperBounds){
+	private void turn(Player player){
 		System.out.println(currentStones + " stones left:" + integerToAsterisk(currentStones));
-		return currentStones -= player.removeStone(upperBounds);
+		currentStones -= player.removeStone(upperBounds);
 	}
-	
-	// queries the player for a second game
-	public static boolean queryPlayAgain(){
-		System.out.println("Do you want to play againt (Y/N):");
-		if (!input.next().equals("Y")){
-			return false;
-		}else{
-		    return true;
-		}
+	@Override
+	protected void resetWinCondition() {
+		currentStones = initStones;
 	}
 }

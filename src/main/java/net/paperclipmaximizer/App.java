@@ -6,10 +6,15 @@ package net.paperclipmaximizer;
  */
 public class App 
 {
+	//boolean playAgain = true;
 	// main method
 	public static void main(String[] args){
-		System.out.println("Welcome to Nim");
 		Nim game = new Nim();
-		game.initGame(); 
+		game.loop(); 
+			//String winner = game.getWinner();
+			//System.out.println("Game Over\n" + winner + " wins!");
+			//playAgain = queryPlayAgain();
+		//}
 	}
+
 }
