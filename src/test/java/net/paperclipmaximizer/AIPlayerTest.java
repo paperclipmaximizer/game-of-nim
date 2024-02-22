@@ -11,8 +11,8 @@ public class AIPlayerTest {
         Player aiPlayer = new AIPlayer();
         
         // Make a move
-        assertTrue(aiPlayer.removeStone(10) <= 10);
-        assertTrue(aiPlayer.removeStone(10) < 0);
+        int aiMove = aiPlayer.removeStone(10);
+        assertTrue(aiMove <= 10);
+        assertTrue(aiMove > 0);
     }
-    
 }
