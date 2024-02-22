@@ -1,14 +1,12 @@
-package test.java.net.paperclipmaximizer;
+package net.paperclipmaximizer;
 
 import org.junit.jupiter.api.Test;
-
-import main.java.net.paperclipmaximizer.AIPlayer;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class AIPlayerTest {
     
     @Test
-    public void testTakeTurn() {
+    void testTakeTurn() {
         // Create an AI player
         Player aiPlayer = new AIPlayer();
         
