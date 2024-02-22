@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AIPlayerTest {
     
     @Test
-    void testTakeTurn() {
+    public void testTakeTurn() {
         // Create an AI player
         Player aiPlayer = new AIPlayer();
         
