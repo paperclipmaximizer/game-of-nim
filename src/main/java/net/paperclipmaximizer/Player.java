@@ -6,7 +6,7 @@ public class Player {
      * initializes a player with an encapsulated name field
      * exposes hidden field with setter and getter methods
      */
-    private String name;
+    protected String name;
     public Player(String _name){
         this.name = _name;
     }
